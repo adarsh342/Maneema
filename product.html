@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+        }
+
+        .logo img {
+            height: 100px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            width: 300px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons img {
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .product-page {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .product-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-images img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .product-thumbnails img {
+            width: 80px;
+            height: auto;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .product-thumbnails img.selected {
+            border: 2px solid purple;
+        }
+
+        .product-details {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .product-details h1 {
+            font-size: 24px;
+        }
+
+        .product-details .price {
+            font-size: 20px;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .product-details .mrp {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .product-details .discount {
+            color: #ff0000;
+            margin-left: 10px;
+        }
+
+        .product-details .inclusive {
+            color: #28a745;
+        }
+
+        .ratings {
+            display: flex;
+            align-items: center;
+        }
+
+        .rating {
+            font-size: 18px;
+            color: #ffbf00;
+        }
+
+        .stars {
+            color: #ffbf00;
+            margin-left: 5px;
+        }
+
+        .ratings-count {
+            margin-left: 10px;
+            color: #999;
+        }
+
+        .colors img {
+            width: 50px;
+            height: auto;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .sizes button {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .sizes button:hover,
+        .sizes button.selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .buy-now,
+        .add-to-cart {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-to-cart {
+            background-color: #28a745;
+        }
+
+        .reviews {
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .browse-more {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .customer-images {
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .customer-images img {
+            width: 100px;
+            height: auto;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .search-bar input {
+                width: 200px;
+            }
+
+            .product-page {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .product-images img {
+                max-width: 100%;
+            }
+
+            .product-thumbnails img {
+                width: 50px;
+            }
+
+            .product-details {
+                padding: 10px;
+                width: 100%;
+            }
+
+            .sizes button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="E:\WebTechnology\portfolio\shopping\89992_1571335856.png" alt="Mani Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+        <div class="nav-icons">
+            <img src="wishlist-icon.png" alt="Wishlist">
+            <img src="cart-icon.png" alt="Cart">
+        </div>
+    </header>
+
+    <main>
+        <div class="product-page">
+            <div class="product-images">
+                <img id="main-product-image" src="E:\WebTechnology\portfolio\shopping\Screenshot 2024-02-24 160514.png" alt="Product Image">
+                <div class="product-thumbnails">
+                    <img src="E:\WebTechnology\portfolio\shopping\Screenshot 2024-02-24 160514.png" alt="Thumbnail 1" onclick="changeImage(this)">
+                    <img src="E:\WebTechnology\portfolio\shopping\Screenshot 2024-02-24 160446.png" alt="Thumbnail 2" onclick="changeImage(this)">
+                    <img src="E:\WebTechnology\portfolio\shopping\Screenshot 2024-02-24 113837.png" alt="Thumbnail 3" onclick="changeImage(this)">
+                </div>
+            </div>
+            <div class="product-details">
+                <h1>Ziva Fashion Smocked Fit & Flare Dress</h1>
+                <p class="price">₹799 <span class="mrp">₹4999</span> <span class="discount">(84% OFF)</span></p>
+                <p class="inclusive">inclusive of all taxes</p>
+                <div class="ratings">
+                    <span class="rating">2.8</span> <span class="stars">★</span> <span class="ratings-count">(109 Ratings)</span>
+                </div>
+                <div class="colors">
+                    <p>More Color</p>
+                    <img src="E:\WebTechnology\portfolio\shopping\Screenshot 2024-02-24 160514.png" alt="Color Option">
+                </div>
+                <div class="sizes">
+                    <p>Select Size</p>
+                    <button onclick="selectSize(this)">S</button>
+                    <button onclick="selectSize(this)">M</button>
+                    <button onclick="selectSize(this)">L</button>
+                    <button onclick="selectSize(this)">XL</button>
+                    <button onclick="selectSize(this)">XXL</button>
+                </div>
+                <button class="buy-now">BUY NOW</button>
+                <button class="add-to-cart">ADD TO CART</button>
+            </div>
+        </div>
+        <div class="customer-images">
+            <h2>Customer Images</h2>
+            <img src="customer1.png" alt="Customer Image 1">
+            <img src="customer2.png" alt="Customer Image 2">
+            <!-- Add more customer images as needed -->
+        </div>
+        <div class="reviews">
+            <h2>Customer Reviews</h2>
+            <p>Review 1: Great product!</p>
+            <p>Review 2: Not worth the price.</p>
+            <!-- Add more reviews -->
+        </div>
+        <div class="browse-more">
+            <h2>Browse More Products</h2>
+            <!-- Add browsing options -->
+        </div>
+    </main>
+
+    <script>
+        function changeImage(element) {
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.src = element.src;
+            
+            const thumbnails = document.querySelectorAll('.product-thumbnails img');
+            thumbnails.forEach(img => img.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectSize(element) {
+            const sizeButtons = document.querySelectorAll('.sizes button');
+            sizeButtons.forEach(button => button.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
