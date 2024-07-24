@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+you didn't understand that here we need to make a swiping feature to browse the products that are listed in the code and we need to link another webpage when user clicks on buy now and add to cart button add this features to below code <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,7 +68,7 @@
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            padding: 20px;
+            padding: 100px 20px 20px;
         }
 
         .product-images {
@@ -211,12 +212,9 @@
             border-top: 1px solid #ddd;
         }
 
-
-
- .product-grid {
+        .product-grid {
             display: flex;
             overflow-x: auto;
-            scroll-snap-type: x mandatory;
         }
 
         .product-card {
@@ -229,7 +227,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
-            scroll-snap-align: start;
         }
 
         .product-card:hover {
@@ -257,10 +254,6 @@
             font-weight: bold;
         }
 
-
-
-
-        
         .customer-images img {
             width: 100px;
             height: auto;
@@ -276,7 +269,7 @@
             .product-page {
                 flex-direction: column;
                 align-items: center;
-                padding: 10px;
+                padding: 100px 10px 10px;
             }
 
             .product-images img {
@@ -300,7 +293,7 @@
     </style>
 </head>
 <body>
-   <header>
+    <header>
         <div class="logo">
             <img src="89992_1571335856.png" alt="Mani Logo">
         </div>
@@ -326,63 +319,58 @@
             </div>
             <div class="product-details">
                 <h1>Ziva Fashion Smocked Fit & Flare Dress</h1>
-                <p class="price">₹799 <span class="mrp">₹4999</span> <span class="discount">(84% OFF)</span></p>
+                <p class="price">₹799 <span class="mrp">₹1,999</span> <span class="discount">60% off</span></p>
                 <p class="inclusive">inclusive of all taxes</p>
                 <div class="ratings">
-                    <span class="rating">2.8</span> <span class="stars">★</span> <span class="ratings-count">(109 Ratings)</span>
+                    <span class="rating">4.5</span>
+                    <span class="stars">★★★★☆</span>
+                    <span class="ratings-count">(1500 ratings)</span>
                 </div>
+
+                <h3>Available Colors:</h3>
                 <div class="colors">
-                    <p>More Color</p>
-                    <img src="lehenga2.webp" alt="Color Option">
+                    <img src="blue.png" alt="Blue Color" onclick="changeImage('blue.png')">
+                    <img src="red.png" alt="Red Color" onclick="changeImage('red.png')">
                 </div>
+
+                <h3>Available Sizes:</h3>
                 <div class="sizes">
-                    <p>Select Size</p>
                     <button onclick="selectSize(this)">S</button>
                     <button onclick="selectSize(this)">M</button>
                     <button onclick="selectSize(this)">L</button>
                     <button onclick="selectSize(this)">XL</button>
                     <button onclick="selectSize(this)">XXL</button>
                 </div>
-                <a href="address.html"
-                <button class="buy-now">BUY NOW</button></a>
-                <a href="order_summary.html"
-                <button class="add-to-cart">ADD TO CART</button></a>
+
+                <button class="buy-now" onclick="buyNow()">Buy Now</button>
+                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
             </div>
         </div>
-        <div class="customer-images">
-            <h2>Customer Images</h2>
-            <img src="new1.png" alt="Customer Image 1">
-            <img src="new2.png" alt="Customer Image 2">
-            <!-- Add more customer images as needed -->
-        </div>
+
         <div class="reviews">
             <h2>Customer Reviews</h2>
-            <p>Review 1: Great product!</p>
-            <p>Review 2: Not worth the price.</p>
-            <!-- Add more reviews -->
+            <!-- Customer reviews will be displayed here -->
         </div>
+
         <div class="browse-more">
             <h2>Browse More Products</h2>
-            <!-- Add browsing options -->
-             <div class="browse-more">
-            <h2>Browse More Products</h2>
             <div class="product-grid">
-                <div class="product-card" onclick="window.location.href='product1.html'">
-                    <img src="https://via.placeholder.com/200x200.png?text=Product+1" alt="Product 1">
+                <div class="product-card">
+                    <img src="product1.png" alt="Product 1">
                     <div class="product-info">
                         <p class="description">Product 1 Description</p>
                         <p class="price">₹499</p>
                     </div>
                 </div>
-                <div class="product-card" onclick="window.location.href='product2.html'">
-                    <img src="https://via.placeholder.com/200x200.png?text=Product+2" alt="Product 2">
+                <div class="product-card">
+                    <img src="product2.png" alt="Product 2">
                     <div class="product-info">
                         <p class="description">Product 2 Description</p>
                         <p class="price">₹599</p>
                     </div>
                 </div>
-                <div class="product-card" onclick="window.location.href='product3.html'">
-                    <img src="https://via.placeholder.com/200x200.png?text=Product+3" alt="Product 3">
+                <div class="product-card">
+                    <img src="product3.png" alt="Product 3">
                     <div class="product-info">
                         <p class="description">Product 3 Description</p>
                         <p class="price">₹699</p>
@@ -391,21 +379,69 @@
             </div>
         </div>
 
-            
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="product1.png" alt="Product 1">
+                <div class="product-info">
+                    <p class="description">Product 1 Description</p>
+                    <p class="price">₹499</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="product2.png" alt="Product 2">
+                <div class="product-info">
+                    <p class="description">Product 2 Description</p>
+                    <p class="price">₹599</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="product3.png" alt="Product 3">
+                <div class="product-info">
+                    <p class="description">Product 3 Description</p>
+                    <p class="price">₹699</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="customer-images">
+            <h2>Customer Images</h2>
+            <img src="customer1.png" alt="Customer Image 1">
+            <img src="customer2.png" alt="Customer Image 2">
+        </div>
+    </main>
+
     <script>
-        function changeImage(element) {
-            const mainImage = document.getElementById('main-product-image');
-            mainImage.src = element.src;
-            
-            const thumbnails = document.querySelectorAll('.product-thumbnails img');
-            thumbnails.forEach(img => img.classList.remove('selected'));
-            element.classList.add('selected');
+        function changeImage(img) {
+            var mainImage = document.getElementById('main-product-image');
+            mainImage.src = img.src;
         }
 
-        function selectSize(element) {
-            const sizeButtons = document.querySelectorAll('.sizes button');
-            sizeButtons.forEach(button => button.classList.remove('selected'));
-            element.classList.add('selected');
+        function selectSize(button) {
+            var sizes = document.querySelectorAll('.sizes button');
+            sizes.forEach(function(size) {
+                size.classList.remove('selected');
+            });
+            button.classList.add('selected');
+        }
+
+        function buyNow() {
+            var selectedSize = document.querySelector('.sizes button.selected');
+            if (!selectedSize) {
+                alert('Please select a size before buying.');
+                return;
+            }
+            // Implement the logic to proceed with buying the product
+        }
+
+        function addToCart() {
+            var selectedSize = document.querySelector('.sizes button.selected');
+            if (!selectedSize) {
+                alert('Please select a size before adding to cart.');
+                return;
+            }
+            // Implement the logic to add the product to the cart
         }
     </script>
 </body>
