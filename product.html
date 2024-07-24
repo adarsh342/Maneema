@@ -338,6 +338,7 @@
                     <button class="size-option" data-size="M">M</button>
                     <button class="size-option" data-size="L">L</button>
                     <button class="size-option" data-size="XL">XL</button>
+                    <button class="size-option" data-size="XXL">XXL</button>
                 </div>
                 <button class="buy-now">Buy Now</button>
                 <button class="add-to-cart">Add to Cart</button>
@@ -422,7 +423,7 @@
 
         document.querySelector('.buy-now').addEventListener('click', function() {
             if (document.querySelector('.size-option.selected')) {
-                window.location.href = 'buy_now.html';
+                window.location.href = 'address.html';
             } else {
                 alert('Please select a size.');
             }
@@ -430,7 +431,7 @@
 
         document.querySelector('.add-to-cart').addEventListener('click', function() {
             if (document.querySelector('.size-option.selected')) {
-                window.location.href = 'cart.html';
+                window.location.href = 'order_summary.html';
             } else {
                 alert('Please select a size.');
             }
