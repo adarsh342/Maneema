@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .order-summary-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .order-summary-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .product-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .product-info {
+            display: flex;
+            align-items: center;
+        }
+        .product-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        .product-details {
+            flex: 1;
+        }
+        .product-details p {
+            margin: 0;
+        }
+        .product-price {
+            text-align: right;
+        }
+        .product-actions {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .btn {
+            margin-right: 5px;
+        }
+        .total-price {
+            font-weight: bold;
+            text-align: right;
+        }
+        .make-payment-btn {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            .order-summary-container {
+                padding: 10px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="order-summary-container">
+        <h2>Order Summary</h2>
+        <div class="product-card" id="product1">
+            <div class="product-info">
+                <img src="path/to/image1.jpg" class="product-image" alt="Product 1">
+                <div class="product-details">
+                    <p><strong>Tokyo Talkies</strong></p>
+                    <p>Shoulder Straps Maxi Dress</p>
+                    <p>Size: XXL</p>
+                    <p class="text-danger">Rs. 769 <span class="text-muted"><del>Rs. 2199</del></span> (65% OFF)</p>
+                </div>
+            </div>
+            <div class="product-actions">
+                <button class="btn btn-danger" onclick="removeProduct('product1')">Remove</button>
+                <button class="btn btn-warning" onclick="saveForLater('product1')">Save for Later</button>
+            </div>
+        </div>
+        <div class="product-card" id="product2">
+            <div class="product-info">
+                <img src="path/to/image2.jpg" class="product-image" alt="Product 2">
+                <div class="product-details">
+                    <p><strong>Janasya</strong></p>
+                    <p>Midi Dress</p>
+                    <p>Size: XL</p>
+                    <p class="text-danger">Rs. 683 <span class="text-muted"><del>Rs. 1899</del></span> (64% OFF)</p>
+                </div>
+            </div>
+            <div class="product-actions">
+                <button class="btn btn-danger" onclick="removeProduct('product2')">Remove</button>
+                <button class="btn btn-warning" onclick="saveForLater('product2')">Save for Later</button>
+            </div>
+        </div>
+        <p class="total-price">Total: Rs. 1452</p>
+        <button class="make-payment-btn">Make Payment</button>
+    </div>
+
+    <script>
+        function removeProduct(productId) {
+            const productElement = document.getElementById(productId);
+            productElement.remove();
+            // Update total price logic here
+        }
+
+        function saveForLater(productId) {
+            const productElement = document.getElementById(productId);
+            productElement.remove();
+            // Logic to save the product for later
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
