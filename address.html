@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: purple;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.5em;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container, .price-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-group .address-type {
+            display: flex;
+            align-items: center;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            background-color: purple;
+            cursor: pointer;
+        }
+        .button-group button.cancel {
+            background-color: #999;
+        }
+        .price-details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .price-details .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Maneema Saree Mall
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form id="addressForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">10-digit mobile number</label>
+                    <input type="text" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="text" id="pincode" name="pincode">
+                </div>
+                <div class="form-group">
+                    <label for="locality">Locality</label>
+                    <input type="text" id="locality" name="locality">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address (Area and Street)</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="city">City/District/Town</label>
+                    <input type="text" id="city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state">
+                        <option value="" disabled selected>--Select State--</option>
+                        <option value="State1">State1</option>
+                        <option value="State2">State2</option>
+                        <option value="State3">State3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="landmark">Landmark (Optional)</label>
+                    <input type="text" id="landmark" name="landmark">
+                </div>
+                <div class="form-group">
+                    <label for="alt-phone">Alternate Phone (Optional)</label>
+                    <input type="text" id="alt-phone" name="alt-phone">
+                </div>
+                <div class="form-group address-type">
+                    <input type="radio" id="home" name="addressType" value="home">
+                    <label for="home">Home (All day delivery)</label>
+                    <input type="radio" id="work" name="addressType" value="work">
+                    <label for="work">Work (Delivery between 10 AM - 5 PM)</label>
+                </div>
+                <div class="button-group">
+                    <button type="submit">SAVE AND DELIVER HERE</button>
+                    <button type="button" class="cancel">CANCEL</button>
+                </div>
+            </form>
+        </div>
+        <div class="price-container">
+            <div class="price-details">
+                <div class="price-item">
+                    <span>Price (1 item)</span>
+                    <span>₹395</span>
+                </div>
+                <div class="price-item">
+                    <span>Delivery Charges</span>
+                    <span>FREE</span>
+                </div>
+                <div class="price-item">
+                    <span>Total Payable</span>
+                    <span>₹395</span>
+                </div>
+                <div class="price-item">
+                    <span>Your Total Savings on this order</span>
+                    <span>₹604</span>
+                </div>
+                <div class="price-item">
+                    <span>Save extra ₹36 using 36 Supercoins</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addressForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let valid = true;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const pincode = document.getElementById('pincode').value;
+            const locality = document.getElementById('locality').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+
+            if (name === '' || phone === '' || pincode === '' || locality === '' || address === '' || city === '' || state === '') {
+                valid = false;
+                alert('Please fill in all required fields.');
+            }
+
+            if (!/^\d{10}$/.test(phone)) {
+                valid = false;
+                alert('Please enter a valid 10-digit mobile number.');
+            }
+
+            if (!/^\d{6}$/.test(pincode)) {
+                valid = false;
+                alert('Please enter a valid 6-digit pincode.');
+            }
+
+            if (valid) {
+                alert('Form submitted successfully!');
+                // Submit the form
+                // this.submit();
+            }
+        });
+    </script>
+</body>
+</html>
