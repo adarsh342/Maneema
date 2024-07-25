@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d0e7f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons img {
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .registration-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .registration-container h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            border-radius: 30px;
+            padding: 10px 15px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .social-buttons a {
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .social-buttons a img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .google { background-color: #fff; }
+        .facebook { background-color: #3b5998; }
+        .instagram { background-color: #e4405f; }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .or-divider:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .or-divider:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        .register-btn {
+            background-color: purple;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            color: #fff;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .registration-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .social-buttons a {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="89992_1571335856.png" alt="Mani Logo">
+        </div>
+        <div class="nav-icons">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdhN1k0OOUUH-HcUInshFTYhJa7k5DbnVvJQ&s" alt="Wishlist">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJWmQL8gVs41Yr0xPKnkRrO7O18fDw8jRONw&s" alt="Cart">
+        </div>
+    </header>
+
+    <div class="registration-container">
+        <h2>Welcome Back...!</h2>
+        <form id="registrationForm">
+            
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Phone number or e-mail id">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+
+            <div class="or-divider">OR</div>
+
+            <div class="social-buttons">
+                <a href="#" class="google">
+                    <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="Google">
+                </a>
+                <a href="#" class="facebook">
+                    <img src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-512.png" alt="Facebook">
+                </a>
+                <a href="#" class="instagram">
+                    <img src="https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/instagram-512.png" alt="Instagram">
+                </a>
+            </div>
+
+            <button type="submit" class="register-btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (name === '' || email === '' || password === '' || confirmPassword === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            alert('Login successful!');
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
